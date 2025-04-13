@@ -48,9 +48,11 @@ int peek(queue q){
     return EMPTY_QUEUE;
   }
 
-  while (!isEmpty(q->pIn)){
-    q->pOut = push(q->pOut, top(q->pIn));
-    q->pIn = pop(q->pIn);
+  if (isEmpty(q->pOut)){
+    while (!isEmpty(q->pIn)){
+      q->pOut = push(q->pOut, top(q->pIn));
+      q->pIn = pop(q->pIn);
+    }
   }
   return top(q->pOut);
 }
